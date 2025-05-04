@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "dfxapi_backend": {
+      "main": "src/dfxapi_backend/main.mo",
+      "type": "motoko"
+    },
+    "dfxapi_frontend": {
+      "dependencies": [
+        "dfxapi_backend"
+      ],
+      "source": [
+        "src/dfxapi_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "dfxapi_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
