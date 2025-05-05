@@ -1,5 +1,7 @@
 # `dfxapi`
 
+This project has been created by Dfinity SDK to illustrate how to use API calls from React frontend to Motoko backend.
+
 Start server.js with "nodemon server.js".
 
 Postman collection of API calls can be found under src/assets folder.
