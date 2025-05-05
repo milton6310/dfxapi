@@ -14,6 +14,15 @@ function CanisterStatus(props) {
             const runningStatus = info.status;
             const items = info.others;
 
+            var statusStyle;
+            if (runningStatus.indexOf("Running") >= 0) {
+                statusStyle = { color: "blue", fontWeight: "bolder" };
+            } else if (runningStatus.indexOf("Stopping") >= 0) {
+                statusStyle = { color: "yellow", fontWeight: "bolder" };
+            } else if (runningStatus.indexOf("Stopped") >= 0) {
+                statusStyle = { color: "red", fontWeight: "bolder" };
+            }
+
             setStatus(
                 <table>
                     <caption>Canister: {props.name}</caption>
@@ -26,7 +35,7 @@ function CanisterStatus(props) {
                     <tbody>
                         <tr>
                             <td>Status</td>
-                            <td>{runningStatus}</td>
+                            <td style={statusStyle}>{runningStatus}</td>
                         </tr>
                         {items.map((item, index) => {
                             return (

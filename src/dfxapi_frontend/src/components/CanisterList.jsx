@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CanisterUrl from "./CanisterUrl";
+import CanisterID from "./CanisterID";
 
 function CanisterList(props) {
 
@@ -32,6 +33,7 @@ function CanisterList(props) {
                 {canisterList ? canisterList.map((name, index) => {
                     return <li key={index}>
                         {name}
+                        <CanisterID name={name} />
                         <CanisterUrl name={name} />
                     </li>
                 }) : <li>No canisters found</li>}

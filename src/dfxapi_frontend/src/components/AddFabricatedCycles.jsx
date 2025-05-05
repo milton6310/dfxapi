@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function AddFabricateCycles(props) {
+function AddFabricatedCycles(props) {
 
     const [balance, setBalance] = useState([]);
+    const [isDisabled, setDisabled] = useState(false);
 
     async function getCanisterCycles() {
         try {
@@ -25,6 +26,7 @@ function AddFabricateCycles(props) {
             });
             const cycles = response.data.cycles;
             setBalance(cycles.upTo);
+            setDisabled(false);
         } catch (error) {
             console.log(error);
         }
@@ -35,14 +37,15 @@ function AddFabricateCycles(props) {
     }, []);
 
     function handleButtonClick() {
+        setDisabled(true);
         addCanisterCycles();
     }
 
     return (
         <div>
-            <button type="button" onClick={handleButtonClick}>Add Fabricated Cycles</button>{props.name} : {balance}
+            <button type="button" onClick={handleButtonClick} disabled={isDisabled}>Add Fabricated Cycles</button>{props.name} : {balance}
         </div>
     );
 }
 
-export default AddFabricateCycles;
+export default AddFabricatedCycles;

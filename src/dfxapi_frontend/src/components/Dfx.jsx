@@ -3,7 +3,7 @@ import axios from "axios";
 import CanisterList from "./CanisterList";
 import CanisterStatus from "./CanisterStatus";
 import Ledger from "./Ledger";
-import AddFabricateCycles from "./AddFabricateCycles";
+import AddFabricatedCycles from "./AddFabricatedCycles";
 
 function Dfx() {
 
@@ -31,7 +31,7 @@ function Dfx() {
     }
 
     return (
-        <>
+        <div>
             <div>
                 <h1>Use of DFX API</h1>
                 <p>
@@ -51,14 +51,16 @@ function Dfx() {
                     <span>Principal</span>: {principal}
                 </label>
             </div>
-            <Ledger />
+            <div>
+                <Ledger />
+            </div>
             <div>
                 <CanisterList onFetch={handleCanisterList} />
             </div>
             <div>
                 <h2>Ledger Cycles</h2>
                 {listOfCanisters ? listOfCanisters.map((item, index) => {
-                    return <AddFabricateCycles key={index} name={item} />
+                    return <AddFabricatedCycles key={index} name={item} />
                 }) : <br />}
             </div>
             <div>
@@ -66,7 +68,7 @@ function Dfx() {
                     return <CanisterStatus key={index} name={item} />
                 }) : <br />}
             </div>
-        </>
+        </div>
     );
 }
 

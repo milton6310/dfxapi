@@ -44,6 +44,10 @@ function linesToArray(lines) {
     return items;
 }
 
+function getCleanLine(line) {
+    return line.replace(/\x1B(\[[0-9;]*[JKmsu]|\(B)/g, "");
+}
+
 app.get("/canister-list", async (req, res) => {
     try {
         const dfx = JSON.parse(await readDfxJson());
@@ -91,7 +95,6 @@ app.get("/schema", async (req, res) => {
         const response = await executeDfx(cmd);
         const output = JSON.parse(response);
         const result = JSON.parse(output.stdout.join(""));
-        console.log(result["Canister"]);
         res.send(result);
     } catch (err) {
         res.status(500).json({ error: err });
@@ -133,7 +136,7 @@ app.get("/wallet-balance", async (req, res) => {
         const output = JSON.parse(response);
         let result = linesToArray(output.stdout);
         if (result.length == 0 && output.stderr != null) {
-            result = [output.stderr];
+            result = [getCleanLine(output.stderr)];
         }
         res.json({
             walletBalance: result
@@ -150,7 +153,7 @@ app.get("/wallet-addresses", async (req, res) => {
         const output = JSON.parse(response);
         let result = linesToArray(output.stdout);
         if (result.length == 0 && output.stderr != null) {
-            result = [output.stderr];
+            result = [getCleanLine(output.stderr)];
         }
         res.json({
             walletAddresses: result
@@ -167,7 +170,7 @@ app.get("/wallet-controllers", async (req, res) => {
         const output = JSON.parse(response);
         let result = linesToArray(output.stdout);
         if (result.length == 0 && output.stderr != null) {
-            result = [output.stderr];
+            result = [getCleanLine(output.stderr)];
         }
         res.json({
             walletControllers: result
@@ -184,7 +187,7 @@ app.get("/wallet-custodians", async (req, res) => {
         const output = JSON.parse(response);
         let result = linesToArray(output.stdout);
         if (result.length == 0 && output.stderr != null) {
-            result = [output.stderr];
+            result = [getCleanLine(output.stderr)];
         }
         res.json({
             walletCustodians: result
@@ -201,7 +204,7 @@ app.get("/wallet-name", async (req, res) => {
         const output = JSON.parse(response);
         let result = linesToArray(output.stdout);
         if (result.length == 0 && output.stderr != null) {
-            result = [output.stderr];
+            result = [getCleanLine(output.stderr)];
         }
         res.json({
             walletName: result
@@ -232,7 +235,7 @@ app.get("/ledger-balance", async (req, res) => {
         const output = JSON.parse(response);
         let result = linesToArray(output.stdout);
         if (result.length == 0 && output.stderr != null) {
-            result = [output.stderr];
+            result = [getCleanLine(output.stderr)];
         }
         res.json({
             ledgerBalance: result
@@ -253,7 +256,6 @@ app.get("/ledger-fab-cycles/:id", async (req, res) => {
             let fabricatedCycles;
             let updatedCycles;
             for (let i = 0; i < items.length; i += 1) {
-                console.log(items[i]);
                 if (items[i].toLowerCase().indexOf("fabricated") > 0) {
                     fabricatedCycles = items[i + 1] + " cycles";
                 } else if (items[i].toLowerCase() == "balance:") {
@@ -313,10 +315,7 @@ app.get("/canister-info/:id", async (req, res) => {
         let hash = "";
         for (const line of output.stdout) {
             if (line.length > 0) {
-                console.log(line);
                 let items = line.split(":");
-                console.log(items[0]);
-                console.log(items[1]);
                 switch (items[0]) {
                     case "Controllers": control = items[1].trim();
                     case "Module hash": hash = items[1].trim();
@@ -380,5 +379,5 @@ app.get("/pem/:id", async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`server started running on port ${port}.`);
+    console.log(`Server started, running on Port ${port}.`);
 });
