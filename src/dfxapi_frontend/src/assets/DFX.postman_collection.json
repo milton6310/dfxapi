@@ -1,0 +1,508 @@
+{
+	"info": {
+		"_postman_id": "fb9818b5-fd7f-4e0b-8b8a-b55ca8500660",
+		"name": "DFX",
+		"description": "DFX is a collection of API calls to get informations on IC's canisters and others. It requires an API server running at '[http://localhost:5000'](http://localhost:5000') under the directory of Dfinity Application project where dfx.json file resides in.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26589348"
+	},
+	"item": [
+		{
+			"name": "canister list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/canister-list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"canister-list"
+					]
+				},
+				"description": "Returns a JSON object including canister names and the details on each canister by parsing dfx.json file."
+			},
+			"response": []
+		},
+		{
+			"name": "get-principal",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/get-principal",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"get-principal"
+					]
+				},
+				"description": "Returns the textual representation of the Principal associated with the current identity."
+			},
+			"response": []
+		},
+		{
+			"name": "whoami",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/whoami",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"whoami"
+					]
+				},
+				"description": "Returns the name of the current identity."
+			},
+			"response": []
+		},
+		{
+			"name": "ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/ping",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"ping"
+					]
+				},
+				"description": "Pings an Internet Computer network and returns its status."
+			},
+			"response": []
+		},
+		{
+			"name": "schema",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/schema",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"schema"
+					]
+				},
+				"description": "Prints the schema for dfx.json."
+			},
+			"response": []
+		},
+		{
+			"name": "identity list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/id-list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"id-list"
+					]
+				},
+				"description": "Lists existing identities."
+			},
+			"response": []
+		},
+		{
+			"name": "canister id mtoken_backend",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:5000/canister/mtoken_backend",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"canister",
+						"mtoken_backend"
+					]
+				},
+				"description": "Returns the identifier of a backend canister named mtoken_backend."
+			},
+			"response": []
+		},
+		{
+			"name": "canister id mtoken_frontend",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/canister/mtoken_frontend",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"canister",
+						"mtoken_frontend"
+					]
+				},
+				"description": "Returns the identifier of a frontend canister named mtoken_backend."
+			},
+			"response": []
+		},
+		{
+			"name": "decrypted PEM file (private key)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/pem/default",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"pem",
+						"default"
+					]
+				},
+				"description": "Returns the decrypted PEM file for the identity."
+			},
+			"response": []
+		},
+		{
+			"name": "ledger account-id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/ledger-id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"ledger-id"
+					]
+				},
+				"description": "Returns the ledger account identifier corresponding to a principal."
+			},
+			"response": []
+		},
+		{
+			"name": "ledger balance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/ledger-balance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"ledger-balance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ledger fabricate cycles mtoken_backend",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/ledger-fab-cycles/mtoken_backend",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"ledger-fab-cycles",
+						"mtoken_backend"
+					]
+				},
+				"description": "Local development only: Fabricate cycles out of thin air and deposit them into the the canister mtoken_backend. Can specify a number of ICP/e8s (which will be converted to cycles using the current exchange rate) or a number of cycles. If no amount is specified, 10T cycles are added."
+			},
+			"response": []
+		},
+		{
+			"name": "ledger fabricate cycles mtoken_frontend",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/ledger-fab-cycles/mtoken_frontend",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"ledger-fab-cycles",
+						"mtoken_frontend"
+					]
+				},
+				"description": "Local development only: Fabricate cycles out of thin air and deposit them into the the canister mtoken_frontend. Can specify a number of ICP/e8s (which will be converted to cycles using the current exchange rate) or a number of cycles. If no amount is specified, 10T cycles are added."
+			},
+			"response": []
+		},
+		{
+			"name": "canister info mtoken_backend",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/canister-info/mtoken_backend",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"canister-info",
+						"mtoken_backend"
+					]
+				},
+				"description": "Returns the hash of a canister’s Wasm module and its current controllers."
+			},
+			"response": []
+		},
+		{
+			"name": "canister info mtoken_frontend",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/canister-info/mtoken_frontend",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"canister-info",
+						"mtoken_frontend"
+					]
+				},
+				"description": "Returns the hash of a canister’s Wasm module and its current controllers."
+			},
+			"response": []
+		},
+		{
+			"name": "canister status mtoken_backend",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/canister-status/mtoken_backend",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"canister-status",
+						"mtoken_backend"
+					]
+				},
+				"description": "Returns the current status of the canister mtoken_backend: Running, Stopping, or Stopped. Also carries information like balance, current settings, memory used and everything returned by 'info'."
+			},
+			"response": []
+		},
+		{
+			"name": "canister status mtoken_frontend",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/canister-status/mtoken_frontend",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"canister-status",
+						"mtoken_frontend"
+					]
+				},
+				"description": "Returns the current status of the canister mtoken_frontend: Running, Stopping, or Stopped. Also carries information like balance, current settings, memory used and everything returned by 'info'."
+			},
+			"response": []
+		},
+		{
+			"name": "canister url mtoken_backend",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/canister-url/mtoken_backend",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"canister-url",
+						"mtoken_backend"
+					]
+				},
+				"description": "Returns the url of a canister named mtoken_backend."
+			},
+			"response": []
+		},
+		{
+			"name": "canister url mtoken_frontend",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/canister-url/mtoken_frontend",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"canister-url",
+						"mtoken_frontend"
+					]
+				},
+				"description": "Returns the url of a canister named mtoken_frontend."
+			},
+			"response": []
+		},
+		{
+			"name": "wallet balance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/wallet-balance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"wallet-balance"
+					]
+				},
+				"description": "Returns the cycle balance of the selected Identity's cycles wallet."
+			},
+			"response": []
+		},
+		{
+			"name": "wallet addresses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/wallet-addresses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"wallet-addresses"
+					]
+				},
+				"description": "Returns wallet's address book."
+			},
+			"response": []
+		},
+		{
+			"name": "wallet controllers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/wallet-controllers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"wallet-controllers"
+					]
+				},
+				"description": "Lists the wallet's controllers."
+			},
+			"response": []
+		},
+		{
+			"name": "wallet custodians",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/wallet-custodians",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"wallet-custodians"
+					]
+				},
+				"description": "Lists the wallet's custodians."
+			},
+			"response": []
+		},
+		{
+			"name": "wallet name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/wallet-name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"wallet-name"
+					]
+				},
+				"description": "Returns wallet name."
+			},
+			"response": []
+		}
+	]
+}
