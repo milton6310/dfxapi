@@ -1,41 +1,75 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Courier", sans-serif;
+}
 body {
-  font-family: sans-serif;
+  background: #eee;
+    padding: 0 16px;
+}
+
+header {
+  background-color: #f5ba13;
+  margin: auto -16px;
+  padding: 16px 32px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+h1,
+h2,
+p {
+  margin: 10px;
+}
+
+label {
+  margin: 10px;
+}
+
+div {
+  margin: 10px;
+}
+
+caption {
+  color: red;
+  margin: 5px;
   font-size: 1.5rem;
+  font-weight: bolder;
 }
 
-img {
-  max-width: 50vw;
-  max-height: 25vw;
-  display: block;
-  margin: auto;
+button {
+  background-color: blue;
+  color: white;
+  padding: 3px;
+  border-radius: 5px;
+  margin-right: 20px;
 }
 
-form {
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 3px;
+}
+
+span {
+  color: blueviolet;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+ul {
+  margin-top: 20px;
+  margin-left: 50px;
+}
+
+.app-screen {
+  height: 100vh;
+  width: 70%;
   display: flex;
-  justify-content: center;
-  gap: 0.5em;
-  flex-flow: row wrap;
-  max-width: 40vw;
-  margin: auto;
-  align-items: baseline;
-}
-
-button[type="submit"] {
-  padding: 5px 20px;
-  margin: 10px auto;
-  float: right;
-}
-
-#greeting {
-  margin: 10px auto;
-  padding: 10px 60px;
-  border: 1px solid #222;
-}
-
-#greeting:empty {
-  display: none;
-}
-
-.browser-warning {
-  display: none;
+  flex-direction: column;
 }

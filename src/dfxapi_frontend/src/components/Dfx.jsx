@@ -1,0 +1,73 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import CanisterList from "./CanisterList";
+import CanisterStatus from "./CanisterStatus";
+import Ledger from "./Ledger";
+import AddFabricateCycles from "./AddFabricateCycles";
+
+function Dfx() {
+
+    const [principal, setPrincipal] = useState("");
+    const [listOfCanisters, setListOfCanisters] = useState();
+
+    async function getPrincipal() {
+        try {
+            const response = await axios.get("http://localhost:5000/get-principal", {
+                mode: "cors",
+            });
+            const id = response.data;
+            setPrincipal(id.principal);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        getPrincipal();
+    }, []);
+
+    function handleCanisterList(list) {
+        setListOfCanisters(list);
+    }
+
+    return (
+        <>
+            <div>
+                <h1>Use of DFX API</h1>
+                <p>
+                    API server file (server.js) should reside in the project root directory with dfx.json. Base URL is "http://localhost:5000". REACT frontend makes API calls to the API server running on Port 5000. the following module needs to be installed. Use "nodemon server.js" to start the server.
+                </p>
+                <div>
+                    <ul>
+                        <li>"ejs": "^3.1.10"</li>
+                        <li>"express": "^5.1.0"</li>
+                        <li>"axios": "^1.9.0"</li>
+                        <li>"cors": "^2.8.5"</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <label>
+                    <span>Principal</span>: {principal}
+                </label>
+            </div>
+            <Ledger />
+            <div>
+                <CanisterList onFetch={handleCanisterList} />
+            </div>
+            <div>
+                <h2>Ledger Cycles</h2>
+                {listOfCanisters ? listOfCanisters.map((item, index) => {
+                    return <AddFabricateCycles key={index} name={item} />
+                }) : <br />}
+            </div>
+            <div>
+                {listOfCanisters ? listOfCanisters.map((item, index) => {
+                    return <CanisterStatus key={index} name={item} />
+                }) : <br />}
+            </div>
+        </>
+    );
+}
+
+export default Dfx;

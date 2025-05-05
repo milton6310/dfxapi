@@ -4,6 +4,11 @@
     "npm": ">=7.0.0"
   },
   "name": "dfxapi",
+  "dependencies": {
+    "@dfinity/auth-client": "^0.10.3",
+    "@dfinity/authentication": "^0.10.3",
+    "@dfinity/identity": "^0.10.3"
+  },
   "scripts": {
     "build": "npm run build --workspaces --if-present",
     "prebuild": "npm run prebuild --workspaces --if-present",
