@@ -4,6 +4,7 @@ import axios from "axios";
 function CanisterStatus(props) {
 
     const [status, setStatus] = useState();
+    const [isDisabled, setDisabled] = useState(false);
 
     async function getCanisterStatus() {
         try {
@@ -13,6 +14,7 @@ function CanisterStatus(props) {
             const info = response.data;
             const runningStatus = info.status;
             const items = info.others;
+            const disabled = isDisabled;
 
             var statusStyle;
             if (runningStatus.indexOf("Running") >= 0) {
@@ -25,7 +27,10 @@ function CanisterStatus(props) {
 
             setStatus(
                 <table>
-                    <caption>Canister: {props.name}</caption>
+                    <caption>
+                        Canister: {props.name}
+                        <button type="button" style={{ marginLeft: "15px" }} onClick={handleButtonClick} disabled={disabled}>Refresh</button>
+                    </caption>
                     <thead>
                         <tr>
                             <th>Item</th>
@@ -48,6 +53,7 @@ function CanisterStatus(props) {
                     </tbody>
                 </table >
             );
+            setDisabled(false);
         } catch (error) {
             console.log(error);
         }
@@ -56,6 +62,12 @@ function CanisterStatus(props) {
     useEffect(() => {
         getCanisterStatus();
     }, []);
+
+    function handleButtonClick() {
+        setDisabled(true);
+        setStatus();
+        getCanisterStatus();
+    }
 
     return (
         <div>

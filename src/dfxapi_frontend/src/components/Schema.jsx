@@ -3,6 +3,8 @@ import axios from "axios";
 
 function Schema() {
 
+    const [isHidden, setHidden] = useState(false);
+
     async function getSchema() {
         try {
             let response = await axios.get("http://localhost:5000/schema", {
@@ -12,6 +14,7 @@ function Schema() {
             const container = document.getElementById('schema-container');
 
             jsonToTree(result, container);
+            setHidden(false);
         } catch (error) {
             console.log(error);
         }
@@ -41,8 +44,16 @@ function Schema() {
         parent.appendChild(ul);
     }
 
+    function handleButtonClick() {
+        setHidden(true);
+        getSchema();
+    }
+
     return (
-        <div id="schema-container" className="schema-scroll">
+        <div>
+            <button type="button" style={{ marginLeft: "15px" }} onClick={handleButtonClick} hidden={isHidden}>Refresh</button>
+            <div id="schema-container" className="schema-scroll" hidden={isHidden}>
+            </div>
         </div>
     );
 }
