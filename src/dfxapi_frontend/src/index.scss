@@ -89,3 +89,10 @@ ul {
   flex-direction: column;
   position: relative;
 }
+
+.schema-scroll {
+  width: 100%;
+  max-height: 600px;
+  overflow-y: scroll;
+  border: black, 2px, solid;
+}

@@ -4,6 +4,7 @@ import CanisterList from "./CanisterList";
 import CanisterStatus from "./CanisterStatus";
 import Ledger from "./Ledger";
 import AddFabricatedCycles from "./AddFabricatedCycles";
+import Schema from "./Schema";
 
 function Dfx() {
 
@@ -67,6 +68,10 @@ function Dfx() {
                 {listOfCanisters ? listOfCanisters.map((item, index) => {
                     return <CanisterStatus key={index} name={item} />
                 }) : <br />}
+            </div>
+            <div>
+                <h2>Schema</h2>
+                <Schema />
             </div>
         </div>
     );
