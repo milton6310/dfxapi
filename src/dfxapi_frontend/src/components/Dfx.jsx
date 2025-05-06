@@ -5,11 +5,14 @@ import CanisterStatus from "./CanisterStatus";
 import Ledger from "./Ledger";
 import AddFabricatedCycles from "./AddFabricatedCycles";
 import Schema from "./Schema";
+import Ping from "./Ping";
+import WhoAmI from "./WhoAmI";
 
 function Dfx() {
 
     const [principal, setPrincipal] = useState("");
     const [listOfCanisters, setListOfCanisters] = useState();
+    const [rootKey, setRootKey] = useState();
 
     async function getPrincipal() {
         try {
@@ -29,6 +32,10 @@ function Dfx() {
 
     function handleCanisterList(list) {
         setListOfCanisters(list);
+    }
+
+    function handleRootKey(key) {
+        setRootKey(key);
     }
 
     return (
@@ -51,6 +58,12 @@ function Dfx() {
                 <label>
                     <span>Principal</span>: {principal}
                 </label>
+            </div>
+            <div>
+                <WhoAmI />
+            </div>
+            <div>
+                <Ping onRootKey={handleRootKey} />
             </div>
             <div>
                 <Ledger />

@@ -27,11 +27,11 @@ function Ledger() {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Ledger ID</td>
+                            <td style={{ whiteSpace: "nowrap" }}>Ledger ID</td>
                             <td>{id}</td>
                         </tr>
                         <tr>
-                            <td>Balance</td>
+                            <td style={{ whiteSpace: "nowrap" }}>Balance</td>
                             <td>{balance}</td>
                         </tr>
                     </tbody>

@@ -9,10 +9,9 @@ function Schema() {
                 mode: "cors",
             });
             const result = response.data;
-            // console.log(result);
             const container = document.getElementById('schema-container');
-            jsonToTree(result, container);
 
+            jsonToTree(result, container);
         } catch (error) {
             console.log(error);
         }
