@@ -129,6 +129,20 @@ app.get("/get-principal", async (req, res) => {
     }
 });
 
+app.get("/get-principal/:id", async (req, res) => {
+    try {
+        const cmd = `dfx --identity ${req.params.id} identity get-principal`;
+        const response = await executeDfx(cmd);
+        const output = JSON.parse(response);
+        const result = linesToArray(output.stdout);
+        res.json({
+            principal: result
+        });
+    } catch (err) {
+        res.status(500).json({ error: err });
+    }
+});
+
 app.get("/wallet-balance", async (req, res) => {
     try {
         const cmd = "dfx wallet balance";

@@ -7,6 +7,7 @@ import AddFabricatedCycles from "./AddFabricatedCycles";
 import Schema from "./Schema";
 import Ping from "./Ping";
 import WhoAmI from "./WhoAmI";
+import Identities from "./Identities";
 
 function Dfx() {
 
@@ -55,12 +56,15 @@ function Dfx() {
                 </div>
             </div>
             <div>
+                <WhoAmI />
+            </div>
+            <div>
                 <label>
                     <span>Principal</span>: {principal}
                 </label>
             </div>
             <div>
-                <WhoAmI />
+                <Identities />
             </div>
             <div>
                 <Ping onRootKey={handleRootKey} />
