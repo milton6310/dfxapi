@@ -8,6 +8,7 @@ import Schema from "./Schema";
 import Ping from "./Ping";
 import WhoAmI from "./WhoAmI";
 import Identities from "./Identities";
+import ExecuteCommand from "./ExecuteCommand";
 
 function Dfx() {
 
@@ -86,6 +87,9 @@ function Dfx() {
                 {listOfCanisters ? listOfCanisters.map((item, index) => {
                     return <CanisterStatus key={index} name={item} />
                 }) : <br />}
+            </div>
+            <div>
+                <ExecuteCommand />
             </div>
             <div>
                 <h2>Schema</h2>

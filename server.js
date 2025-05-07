@@ -36,17 +36,50 @@ function readDfxJson() {
 
 function linesToArray(lines) {
     let items = [];
-    for (const line of lines) {
-        if (line.length > 0) {
-            items.push(line);
+    if (lines) {
+        for (const line of lines) {
+            if (line.length > 0) {
+                items.push(line);
+            }
         }
     }
     return items;
 }
 
 function getCleanLine(line) {
-    return line.replace(/\x1B(\[[0-9;]*[JKmsu]|\(B)/g, "");
+    if (line) {
+        return line.replace(/\x1B(\[[0-9;]*[JKmsu]|\(B)/g, "");
+    } else {
+        return line;
+    }
 }
+
+function getCleanLines(lines) {
+    let result = [];
+    for (const line in lines) {
+        result.push(getCleanLine(line));
+    }
+    return result;
+}
+
+app.post("/exec", async (req, res) => {
+    try {
+        console.log(req.body);
+        const cmd = req.body.cmd;
+        const response = await executeDfx(cmd);
+        const output = JSON.parse(response);
+        const error = linesToArray(output.err);
+        const stderr = linesToArray(output.stderr);
+        const stdout = linesToArray(output.stdout);
+        res.json({
+            error: error,
+            stderr: stderr,
+            result: stdout
+        });
+    } catch (err) {
+        res.status(500).json({ error: err });
+    }
+});
 
 app.get("/canister-list", async (req, res) => {
     try {

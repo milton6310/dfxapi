@@ -8,6 +8,36 @@
 	},
 	"item": [
 		{
+			"name": "run exec",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "cmd",
+							"value": "dfx identity list",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/exec",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"exec"
+					]
+				},
+				"description": "Pass and run DFX command directly and return its response including ERR, STRERR, and STDOUT as Result."
+			},
+			"response": []
+		},
+		{
 			"name": "canister list",
 			"request": {
 				"method": "GET",
@@ -41,6 +71,48 @@
 					"port": "5000",
 					"path": [
 						"get-principal"
+					]
+				},
+				"description": "Returns the textual representation of the Principal associated with the current identity."
+			},
+			"response": []
+		},
+		{
+			"name": "get-principal default",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/get-principal/default",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"get-principal",
+						"default"
+					]
+				},
+				"description": "Returns the textual representation of the Principal associated with the current identity."
+			},
+			"response": []
+		},
+		{
+			"name": "get-principal anonymous",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/get-principal/anonymous",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"get-principal",
+						"anonymous"
 					]
 				},
 				"description": "Returns the textual representation of the Principal associated with the current identity."
@@ -128,7 +200,7 @@
 			"response": []
 		},
 		{
-			"name": "canister id mtoken_backend",
+			"name": "canister id dfxapi_backend",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -156,12 +228,12 @@
 			"response": []
 		},
 		{
-			"name": "canister id mtoken_frontend",
+			"name": "canister id dfxapi_frontend",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/canister/mtoken_frontend",
+					"raw": "http://localhost:5000/canister/dfxapi_frontend",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -169,7 +241,7 @@
 					"port": "5000",
 					"path": [
 						"canister",
-						"mtoken_frontend"
+						"dfxapi_frontend"
 					]
 				},
 				"description": "Returns the identifier of a frontend canister named mtoken_backend."
@@ -237,12 +309,12 @@
 			"response": []
 		},
 		{
-			"name": "ledger fabricate cycles mtoken_backend",
+			"name": "ledger fabricate cycles dfxapi_backend",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/ledger-fab-cycles/mtoken_backend",
+					"raw": "http://localhost:5000/ledger-fab-cycles/dfxapi_backend",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -250,7 +322,7 @@
 					"port": "5000",
 					"path": [
 						"ledger-fab-cycles",
-						"mtoken_backend"
+						"dfxapi_backend"
 					]
 				},
 				"description": "Local development only: Fabricate cycles out of thin air and deposit them into the the canister mtoken_backend. Can specify a number of ICP/e8s (which will be converted to cycles using the current exchange rate) or a number of cycles. If no amount is specified, 10T cycles are added."
@@ -258,12 +330,12 @@
 			"response": []
 		},
 		{
-			"name": "ledger fabricate cycles mtoken_frontend",
+			"name": "ledger fabricate cycles dfxapi_frontend",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/ledger-fab-cycles/mtoken_frontend",
+					"raw": "http://localhost:5000/ledger-fab-cycles/dfxapi_frontend",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -271,7 +343,7 @@
 					"port": "5000",
 					"path": [
 						"ledger-fab-cycles",
-						"mtoken_frontend"
+						"dfxapi_frontend"
 					]
 				},
 				"description": "Local development only: Fabricate cycles out of thin air and deposit them into the the canister mtoken_frontend. Can specify a number of ICP/e8s (which will be converted to cycles using the current exchange rate) or a number of cycles. If no amount is specified, 10T cycles are added."
@@ -279,12 +351,12 @@
 			"response": []
 		},
 		{
-			"name": "canister info mtoken_backend",
+			"name": "canister info dfxapi_backend",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/canister-info/mtoken_backend",
+					"raw": "http://localhost:5000/canister-info/dfxapi_backend",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -292,7 +364,7 @@
 					"port": "5000",
 					"path": [
 						"canister-info",
-						"mtoken_backend"
+						"dfxapi_backend"
 					]
 				},
 				"description": "Returns the hash of a canister’s Wasm module and its current controllers."
@@ -300,12 +372,12 @@
 			"response": []
 		},
 		{
-			"name": "canister info mtoken_frontend",
+			"name": "canister info dfxapi_frontend",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/canister-info/mtoken_frontend",
+					"raw": "http://localhost:5000/canister-info/dfxapi_frontend",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -313,7 +385,7 @@
 					"port": "5000",
 					"path": [
 						"canister-info",
-						"mtoken_frontend"
+						"dfxapi_frontend"
 					]
 				},
 				"description": "Returns the hash of a canister’s Wasm module and its current controllers."
@@ -321,12 +393,12 @@
 			"response": []
 		},
 		{
-			"name": "canister status mtoken_backend",
+			"name": "canister status dfxapi_backend",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/canister-status/mtoken_backend",
+					"raw": "http://localhost:5000/canister-status/dfxapi_backend",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -334,7 +406,7 @@
 					"port": "5000",
 					"path": [
 						"canister-status",
-						"mtoken_backend"
+						"dfxapi_backend"
 					]
 				},
 				"description": "Returns the current status of the canister mtoken_backend: Running, Stopping, or Stopped. Also carries information like balance, current settings, memory used and everything returned by 'info'."
@@ -342,12 +414,12 @@
 			"response": []
 		},
 		{
-			"name": "canister status mtoken_frontend",
+			"name": "canister status dfxapi_frontend",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/canister-status/mtoken_frontend",
+					"raw": "http://localhost:5000/canister-status/dfxapi_frontend",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -355,7 +427,7 @@
 					"port": "5000",
 					"path": [
 						"canister-status",
-						"mtoken_frontend"
+						"dfxapi_frontend"
 					]
 				},
 				"description": "Returns the current status of the canister mtoken_frontend: Running, Stopping, or Stopped. Also carries information like balance, current settings, memory used and everything returned by 'info'."
@@ -363,12 +435,12 @@
 			"response": []
 		},
 		{
-			"name": "canister url mtoken_backend",
+			"name": "canister url dfxapi_backend",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/canister-url/mtoken_backend",
+					"raw": "http://localhost:5000/canister-url/dfxapi_backend",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -376,7 +448,7 @@
 					"port": "5000",
 					"path": [
 						"canister-url",
-						"mtoken_backend"
+						"dfxapi_backend"
 					]
 				},
 				"description": "Returns the url of a canister named mtoken_backend."
@@ -384,12 +456,12 @@
 			"response": []
 		},
 		{
-			"name": "canister url mtoken_frontend",
+			"name": "canister url dfxapi_frontend",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/canister-url/mtoken_frontend",
+					"raw": "http://localhost:5000/canister-url/dfxapi_frontend",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -397,7 +469,7 @@
 					"port": "5000",
 					"path": [
 						"canister-url",
-						"mtoken_frontend"
+						"dfxapi_frontend"
 					]
 				},
 				"description": "Returns the url of a canister named mtoken_frontend."

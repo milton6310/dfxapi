@@ -28,7 +28,7 @@ function CanisterStatus(props) {
             setStatus(
                 <table>
                     <caption>
-                        Canister: {props.name}
+                        {props.name}
                         <button type="button" style={{ marginLeft: "15px" }} onClick={handleButtonClick} disabled={disabled}>Refresh</button>
                     </caption>
                     <thead>
