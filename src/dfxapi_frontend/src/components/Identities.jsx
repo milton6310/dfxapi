@@ -23,7 +23,7 @@ function Identities() {
     }, []);
 
     return (
-        <div>
+        <div className="component">
             <h2>Identities</h2>
             <ul>
                 {identityList ? identityList.map((name, index) => {

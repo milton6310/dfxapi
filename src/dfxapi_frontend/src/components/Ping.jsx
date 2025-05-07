@@ -57,7 +57,7 @@ function Ping(props) {
     }, []);
 
     return (
-        <div>
+        <div className="component">
             <h2>Ping</h2>
             {pingInfo}
         </div>

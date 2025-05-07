@@ -50,9 +50,13 @@ function Schema() {
     }
 
     return (
-        <div>
-            <button type="button" style={{ marginLeft: "15px" }} onClick={handleButtonClick} hidden={isHidden}>Refresh</button>
-            <div id="schema-container" className="schema-scroll" hidden={isHidden}>
+        <div className="component">
+            <h2>Schema</h2>
+            <button type="button" style={{ marginLeft: "15px" }} onClick={handleButtonClick}>Refresh</button>
+            <br />
+            <div>
+                <div id="schema-container" className="schema-scroll" hidden={isHidden}>
+                </div>
             </div>
         </div>
     );

@@ -4,6 +4,7 @@ import axios from "axios";
 function WhoAmI() {
 
     const [iam, setIam] = useState();
+    const [principal, setPrincipal] = useState("");
 
     async function getIdentity() {
         try {
@@ -11,8 +12,13 @@ function WhoAmI() {
                 mode: "cors",
             });
             const info = response.data;
-
             setIam(info["identity"]);
+
+            response = await axios.get("http://localhost:5000/get-principal", {
+                mode: "cors",
+            });
+            const id = response.data;
+            setPrincipal(id.principal);
         } catch (error) {
             console.log(error);
         }
@@ -23,9 +29,11 @@ function WhoAmI() {
     }, []);
 
     return (
-        <label>
-            <span>I am </span>: {iam}
-        </label>
+        <div className="component">
+            <span className="accent">I am </span>: {iam}
+            <br />
+            <span className="accent">Principal</span>: {principal}
+        </div>
     );
 }
 

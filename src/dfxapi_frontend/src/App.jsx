@@ -4,7 +4,7 @@ import Dfx from "./components/Dfx";
 function App(props) {
 
   return (
-    <div id="screen" className="app-screen">
+    <div id="screen">
       <Dfx />
     </div>
   );

@@ -47,7 +47,7 @@ function Ledger() {
     }, []);
 
     return (
-        <div>
+        <div className="component">
             <h2>Ledger</h2>
             {ledgerInfo}
         </div>

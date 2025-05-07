@@ -64,7 +64,6 @@ function getCleanLines(lines) {
 
 app.post("/exec", async (req, res) => {
     try {
-        console.log(req.body);
         const cmd = req.body.cmd;
         const response = await executeDfx(cmd);
         const output = JSON.parse(response);

@@ -6,6 +6,30 @@ function ExecuteCommand() {
     const [execResult, setExecResult] = useState();
     const [command, setCommand] = useState("");
 
+    function formatOutput(lines) {
+        console.log(lines);
+        let result = [];
+        if (lines) {
+            for (const line of lines) {
+                console.log(line);
+                if (line === " ") {
+                    result.push("_");
+                } else {
+                    if (line.indexOf("\x1B") >= 0) {
+                        result.push(line.replace(/\x1B(\[[0-9;]*[JKmsu]|\(B)/g, ""));
+                    } else {
+                        result.push(line);
+                    }
+                }
+            }
+        }
+        if (result.length > 0) {
+            return result.join(", ");
+        } else {
+            return [];
+        }
+    }
+
     async function execCommand() {
         try {
             const params = new URLSearchParams();
@@ -15,9 +39,9 @@ function ExecuteCommand() {
                 mode: "cors",
             });
             const data = response.data;
-            const error = data.error;
-            const stderr = data.stderr;
-            const result = data.result;
+            const error = formatOutput(data.error);
+            const stderr = formatOutput(data.stderr);
+            const result = formatOutput(data.result);
 
             setExecResult(
                 <table>
@@ -61,11 +85,13 @@ function ExecuteCommand() {
     }
 
     return (
-        <div>
+        <div className="component">
             <h2>Execute Command</h2>
-            <button type="button" style={{ marginRight: "15px" }} onClick={handleButtonClick}>RUN</button>
-            <input type="text" onChange={handleInputChange} value={command} />
-            {execResult}
+            <button type="button" style={{ marginLeft: "20px", marginRight: "15px" }} onClick={handleButtonClick}>RUN</button>
+            <input type="text" style={{ padding: "3px", width: "600px" }} onChange={handleInputChange} value={command} />
+            <div className="exec-table">
+                {execResult}
+            </div>
         </div>
     );
 }

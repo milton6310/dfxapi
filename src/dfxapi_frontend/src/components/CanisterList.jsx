@@ -27,7 +27,7 @@ function CanisterList(props) {
     }, []);
 
     return (
-        <div>
+        <div className="component">
             <h2>Canisters</h2>
             <ul>
                 {canisterList ? canisterList.map((name, index) => {
