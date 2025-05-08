@@ -46,7 +46,7 @@ function CanisterStatus(props) {
                             return (
                                 <tr key={index}>
                                     <td style={{ whiteSpace: "nowrap" }}>{item.item}</td>
-                                    <td>{item.value}</td>
+                                    <td><pre>{item.value}</pre></td>
                                 </tr>
                             );
                         })}

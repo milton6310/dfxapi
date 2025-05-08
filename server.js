@@ -362,9 +362,10 @@ app.get("/canister-info/:id", async (req, res) => {
         for (const line of output.stdout) {
             if (line.length > 0) {
                 let items = line.split(":");
-                switch (items[0]) {
-                    case "Controllers": control = items[1].trim();
-                    case "Module hash": hash = items[1].trim();
+                if (items[0] === "Controllers") {
+                    control = items[1].trim();
+                } else if (items[0] === "Module hash") {
+                    hash = items[1].trim();
                 }
             }
         }
@@ -389,8 +390,14 @@ app.get("/canister-status/:id", async (req, res) => {
             if (line.length > 0) {
                 const items = line.split(":");
                 if (items[1] != undefined) {
-                    if (items[0] == "Status") {
+                    if (items[0] === "Status") {
                         status = items[1];
+                    } else if (items[0] === "Controllers") {
+                        const control = items[1].trim().replace(" ", "\n");
+                        details.push({
+                            item: items[0],
+                            value: control
+                        });
                     } else {
                         details.push({
                             item: items[0],

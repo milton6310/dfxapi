@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import CanisterList from "./CanisterList";
 import CanisterStatus from "./CanisterStatus";
 import Ledger from "./Ledger";

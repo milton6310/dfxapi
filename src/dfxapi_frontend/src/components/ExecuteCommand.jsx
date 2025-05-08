@@ -7,14 +7,12 @@ function ExecuteCommand() {
     const [command, setCommand] = useState("");
 
     function formatOutput(lines) {
-        console.log(lines);
         let result = [];
         if (lines) {
             for (const line of lines) {
-                console.log(line);
                 if (line === " ") {
                     result.push("_");
-                } else {
+                } else if (line !== "IDENTITY_NAME") {
                     if (line.indexOf("\x1B") >= 0) {
                         result.push(line.replace(/\x1B(\[[0-9;]*[JKmsu]|\(B)/g, ""));
                     } else {
@@ -24,7 +22,7 @@ function ExecuteCommand() {
             }
         }
         if (result.length > 0) {
-            return result.join(", ");
+            return result.join("\n");
         } else {
             return [];
         }
@@ -32,8 +30,9 @@ function ExecuteCommand() {
 
     async function execCommand() {
         try {
+            const cmdLowerCase = command.toLowerCase();
             const params = new URLSearchParams();
-            params.append('cmd', command);
+            params.append('cmd', cmdLowerCase);
 
             let response = await axios.post("http://localhost:5000/exec", params, {
                 mode: "cors",
@@ -52,11 +51,11 @@ function ExecuteCommand() {
                         </tr>
                         <tr>
                             <td style={{ whiteSpace: "nowrap" }}>Output Error</td>
-                            <td>{stderr}</td>
+                            <td><pre>{stderr}</pre></td>
                         </tr>
                         <tr>
                             <td style={{ whiteSpace: "nowrap" }}>Result</td>
-                            <td>{result}</td>
+                            <td><pre>{result}</pre></td>
                         </tr>
                     </tbody>
                 </table>
@@ -84,11 +83,17 @@ function ExecuteCommand() {
         setCommand(event.target.value);
     }
 
+    function handleKeyDown(event) {
+        if (event.key === "Enter") {
+            execCommand();
+        }
+    }
+
     return (
         <div className="component">
             <h2>Execute Command</h2>
             <button type="button" style={{ marginLeft: "20px", marginRight: "15px" }} onClick={handleButtonClick}>RUN</button>
-            <input type="text" style={{ padding: "3px", width: "600px" }} onChange={handleInputChange} value={command} />
+            <input type="text" style={{ padding: "3px", width: "600px" }} onChange={handleInputChange} onKeyDown={handleKeyDown} value={command} />
             <div className="exec-table">
                 {execResult}
             </div>
