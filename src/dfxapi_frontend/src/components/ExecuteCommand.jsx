@@ -30,9 +30,8 @@ function ExecuteCommand() {
 
     async function execCommand() {
         try {
-            const cmdLowerCase = command.toLowerCase();
             const params = new URLSearchParams();
-            params.append('cmd', cmdLowerCase);
+            params.append('cmd', command);
 
             let response = await axios.post("http://localhost:5000/exec", params, {
                 mode: "cors",

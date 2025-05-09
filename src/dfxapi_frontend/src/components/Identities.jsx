@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import IdentityPrincipal from "./IdentityPrincipal";
 
-function Identities() {
+function Identities(props) {
 
     const [identityList, setIdentityList] = useState();
 
@@ -13,6 +13,9 @@ function Identities() {
             });
             const list = response.data.identity;
             setIdentityList(list);
+            if (props.onList) {
+                props.onList(list);
+            }
         } catch (error) {
             console.log(error);
         }

@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import CanisterList from "./CanisterList";
-import CanisterStatus from "./CanisterStatus";
 import Ledger from "./Ledger";
-import AddFabricatedCycles from "./AddFabricatedCycles";
 import Schema from "./Schema";
 import Ping from "./Ping";
 import WhoAmI from "./WhoAmI";
 import Identities from "./Identities";
 import ExecuteCommand from "./ExecuteCommand";
+import CanisterCycles from "./CanisterCycles";
+import CanisterStatusInfo from "./CanisterStatusInfo";
+import ExportIdentities from "./ExportIdentities";
 
 function Dfx() {
 
     const [listOfCanisters, setListOfCanisters] = useState();
     const [rootKey, setRootKey] = useState();
+    const [identities, setIdentities] = useState();
 
     function handleCanisterList(list) {
         setListOfCanisters(list);
@@ -20,6 +22,10 @@ function Dfx() {
 
     function handleRootKey(key) {
         setRootKey(key);
+    }
+
+    function handleIdentityList(list) {
+        setIdentities(list);
     }
 
     return (
@@ -39,22 +45,13 @@ function Dfx() {
                 </div>
             </div>
             <WhoAmI />
-            <Identities />
+            <Identities onList={handleIdentityList} />
             <Ping onRootKey={handleRootKey} />
             <Ledger />
-            <div className="component">
-                <h2>Cycles</h2>
-                {listOfCanisters ? listOfCanisters.map((item, index) => {
-                    return <AddFabricatedCycles key={index} name={item} />
-                }) : <br />}
-            </div>
             <CanisterList onFetch={handleCanisterList} />
-            <div className="component">
-                <h2>Canister Status</h2>
-                {listOfCanisters ? listOfCanisters.map((item, index) => {
-                    return <CanisterStatus key={index} name={item} />
-                }) : <br />}
-            </div>
+            <CanisterCycles canisters={listOfCanisters} />
+            <ExportIdentities list={identities} />
+            <CanisterStatusInfo canisters={listOfCanisters} />
             <ExecuteCommand />
             <Schema />
         </div>
