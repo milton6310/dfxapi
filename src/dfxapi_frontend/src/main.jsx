@@ -5,6 +5,9 @@ import './index.scss';
 import { AuthClient } from "@dfinity/auth-client";
 import { Principal } from '@dfinity/principal';
 
+const CURRENT_USER_ID = Principal.fromText("2vxsx-fae");
+export default CURRENT_USER_ID;
+
 const init = async () => {
   const authClient = await AuthClient.create();
   if (authClient.isAuthenticated()) {

@@ -16,6 +16,8 @@ function CanisterStatus(props) {
             const items = info.others;
             const disabled = isDisabled;
 
+            console.log(items);
+
             var statusStyle;
             if (runningStatus.indexOf("Running") >= 0) {
                 statusStyle = { color: "blue", fontWeight: "bolder" };
@@ -26,27 +28,27 @@ function CanisterStatus(props) {
             }
 
             setStatus(
-                <table>
+                <table className="dfx-table">
                     <caption>
                         {props.name}
-                        <button type="button" style={{ marginLeft: "15px" }} onClick={handleButtonClick} disabled={disabled}>Refresh</button>
+                        <button className="dfx-button" type="button" style={{ marginLeft: "15px" }} onClick={handleButtonClick} disabled={disabled}>Refresh</button>
                     </caption>
                     <thead>
                         <tr>
-                            <th>Item</th>
-                            <th>Value</th>
+                            <th className="dfx-th">Item</th>
+                            <th className="dfx-th">Value</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Status</td>
-                            <td style={statusStyle}>{runningStatus}</td>
+                            <td className="dfx-td">Status</td>
+                            <td className="dfx-td" style={statusStyle}>{runningStatus}</td>
                         </tr>
                         {items.map((item, index) => {
                             return (
                                 <tr key={index}>
-                                    <td style={{ whiteSpace: "nowrap" }}>{item.item}</td>
-                                    <td><pre>{item.value}</pre></td>
+                                    <td className="dfx-td" style={{ whiteSpace: "nowrap" }}>{item.item}</td>
+                                    <td className="dfx-td"><pre>{item.value}</pre></td>
                                 </tr>
                             );
                         })}

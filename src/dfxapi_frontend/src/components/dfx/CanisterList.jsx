@@ -29,7 +29,7 @@ function CanisterList(props) {
     return (
         <div className="component">
             <h2>Canisters</h2>
-            <ul>
+            <ul className="dfx-ul">
                 {canisterList ? canisterList.map((name, index) => {
                     return <li key={index}>
                         {name}

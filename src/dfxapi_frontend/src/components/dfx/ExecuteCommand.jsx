@@ -42,19 +42,19 @@ function ExecuteCommand() {
             const result = formatOutput(data.result);
 
             setExecResult(
-                <table>
+                <table className="dfx-table">
                     <tbody>
                         <tr>
-                            <td style={{ whiteSpace: "nowrap" }}>Error</td>
-                            <td>{error}</td>
+                            <td className="dfx-td" style={{ whiteSpace: "nowrap" }}>Error</td>
+                            <td className="dfx-td">{error}</td>
                         </tr>
                         <tr>
-                            <td style={{ whiteSpace: "nowrap" }}>Output Error</td>
-                            <td><pre>{stderr}</pre></td>
+                            <td className="dfx-td" style={{ whiteSpace: "nowrap" }}>Output Error</td>
+                            <td className="dfx-td"><pre>{stderr}</pre></td>
                         </tr>
                         <tr>
-                            <td style={{ whiteSpace: "nowrap" }}>Result</td>
-                            <td><pre>{result}</pre></td>
+                            <td className="dfx-td" style={{ whiteSpace: "nowrap" }}>Result</td>
+                            <td className="dfx-td"><pre>{result}</pre></td>
                         </tr>
                     </tbody>
                 </table>
@@ -62,11 +62,11 @@ function ExecuteCommand() {
         } catch (error) {
             console.log(error);
             setExecResult(
-                <table>
+                <table className="dfx-table">
                     <tbody>
                         <tr>
-                            <td style={{ whiteSpace: "nowrap" }}>Error</td>
-                            <td>{error.response.statusText}</td>
+                            <td className="dfx-td" style={{ whiteSpace: "nowrap" }}>Error</td>
+                            <td className="dfx-td">{error.response.statusText}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -91,7 +91,7 @@ function ExecuteCommand() {
     return (
         <div className="component">
             <h2>Execute Command</h2>
-            <button type="button" style={{ marginLeft: "20px", marginRight: "15px" }} onClick={handleButtonClick}>RUN</button>
+            <button className="dfx-button" type="button" style={{ marginLeft: "20px", marginRight: "15px" }} onClick={handleButtonClick}>RUN</button>
             <input type="text" style={{ padding: "3px", width: "600px" }} onChange={handleInputChange} onKeyDown={handleKeyDown} value={command} />
             <div className="exec-table">
                 {execResult}

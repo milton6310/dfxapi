@@ -43,7 +43,7 @@ function AddFabricatedCycles(props) {
 
     return (
         <div>
-            <button type="button" onClick={handleButtonClick} disabled={isDisabled}>Add Fabricated Cycles</button>{props.name} : {balance}
+            <button className="dfx-button" type="button" onClick={handleButtonClick} disabled={isDisabled}>Add Fabricated Cycles</button>{props.name} : {balance}
         </div>
     );
 }

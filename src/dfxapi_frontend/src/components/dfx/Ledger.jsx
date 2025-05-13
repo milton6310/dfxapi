@@ -18,21 +18,21 @@ function Ledger() {
             const balance = response.data.ledgerBalance;
 
             setLedgerInfo(
-                <table>
+                <table className="dfx-table">
                     <thead>
                         <tr>
-                            <th>Item</th>
-                            <th>Value</th>
+                            <th className="dfx-th">Item</th>
+                            <th className="dfx-th">Value</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td style={{ whiteSpace: "nowrap" }}>Ledger ID</td>
-                            <td>{id}</td>
+                            <td className="dfx-td" style={{ whiteSpace: "nowrap" }}>Ledger ID</td>
+                            <td className="dfx-td">{id}</td>
                         </tr>
                         <tr>
-                            <td style={{ whiteSpace: "nowrap" }}>Balance</td>
-                            <td>{balance}</td>
+                            <td className="dfx-td" style={{ whiteSpace: "nowrap" }}>Balance</td>
+                            <td className="dfx-td">{balance}</td>
                         </tr>
                     </tbody>
                 </table>

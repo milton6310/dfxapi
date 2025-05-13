@@ -9,7 +9,7 @@ function CanisterStatusInfo(props) {
         <div className="component">
             <h2>Canister Status</h2>
             {listOfCanisters ? listOfCanisters.map((item, index) => {
-                return <CanisterStatus key={index} name={item} />
+                return <CanisterStatus key={index} name={item} />;
             }) : <br />}
         </div>
     );

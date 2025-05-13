@@ -28,7 +28,7 @@ function Identities(props) {
     return (
         <div className="component">
             <h2>Identities</h2>
-            <ul>
+            <ul className="dfx-ul">
                 {identityList ? identityList.map((name, index) => {
                     return <li key={index}>
                         {name}: <IdentityPrincipal name={name} />

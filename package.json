@@ -7,7 +7,13 @@
   "dependencies": {
     "@dfinity/auth-client": "^0.10.3",
     "@dfinity/authentication": "^0.10.3",
-    "@dfinity/identity": "^0.10.3"
+    "@dfinity/identity": "^0.10.3",
+    "bootstrap": "^5.3.5",
+    "lit-html": "^3.3.0",
+    "react-bootstrap": "^2.10.9",
+    "react-hook-form": "^7.56.1",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.8.3"
   },
   "scripts": {
     "build": "npm run build --workspaces --if-present",

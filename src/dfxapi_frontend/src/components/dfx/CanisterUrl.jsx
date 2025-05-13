@@ -12,7 +12,7 @@ function CanisterUrl(props) {
             });
             const urls = response.data.URL;
             setCanisterUrl(
-                <ul>
+                <ul className="dfx-ul">
                     {
                         urls ? urls.map((url, index) => {
                             return <li key={index}><a href={url} target="_blank">{url}</a></li>;

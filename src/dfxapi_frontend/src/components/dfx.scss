@@ -1,0 +1,105 @@
+.component h1,
+h2,
+p {
+    margin: 10px;
+}
+
+.component label {
+    margin: 30px;
+    text-align: center;
+    display: block;
+}
+
+div {
+    margin: 10px;
+}
+
+.component caption {
+    color: red;
+    margin: 5px;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.dfx-button {
+    background-color: blue;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.dfx-button:hover {
+    border: 1px solid #0099cc;
+    background-color: #00aacc;
+    color: #ffffff;
+    padding: 5px 10px;
+}
+
+.dfx-button:disabled,
+.dfx-button[disabled] {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+}
+
+.dfx-table {
+    caption-side: top;
+}
+
+.dfx-table,
+.dfx-th,
+.dfx-td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 3px;
+}
+
+.dfx-ul {
+    margin-top: 5px;
+    margin-left: 60px;
+}
+
+.component pre {
+    font-size: 1rem;
+    display: contents;
+    padding: 0;
+}
+
+.dfx-container {
+    font-family: "Courier", sans-serif;
+    text-align: left;
+    background-color: #eee;
+    color: black;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.component {
+    margin-top: 2.5rem;
+}
+
+.accent {
+    color: blueviolet;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 10px 0 10px 40px;
+}
+
+.schema-scroll {
+    width: 100%;
+    max-height: 600px;
+    overflow-y: scroll;
+    border: black, 2px, solid;
+    margin: 0;
+    padding: 0;
+}
+
+.exec-table {
+    margin: 20px 0px;
+}

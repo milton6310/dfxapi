@@ -52,7 +52,7 @@ function Schema() {
     return (
         <div className="component">
             <h2>Schema</h2>
-            <button type="button" style={{ marginLeft: "15px" }} onClick={handleButtonClick}>Refresh</button>
+            <button className="dfx-button" type="button" style={{ marginLeft: "15px" }} onClick={handleButtonClick}>Refresh</button>
             <br />
             <div>
                 <div id="schema-container" className="schema-scroll" hidden={isHidden}>

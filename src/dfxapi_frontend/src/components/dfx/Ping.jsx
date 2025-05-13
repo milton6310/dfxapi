@@ -28,21 +28,21 @@ function Ping(props) {
             }
 
             setPingInfo(
-                <table>
+                <table className="dfx-table">
                     <thead>
                         <tr>
-                            <th>Item</th>
-                            <th>Value</th>
+                            <th className="dfx-th">Item</th>
+                            <th className="dfx-th">Value</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td style={{ whiteSpace: "nowrap" }}>Status</td>
-                            <td style={statusStyle}>{status.toUpperCase()}</td>
+                            <td className="dfx-td" style={{ whiteSpace: "nowrap" }}>Status</td>
+                            <td className="dfx-td" style={statusStyle}>{status.toUpperCase()}</td>
                         </tr>
                         <tr>
-                            <td style={{ whiteSpace: "nowrap" }}>Root Key</td>
-                            <td>{keyString}</td>
+                            <td className="dfx-td" style={{ whiteSpace: "nowrap" }}>Root Key</td>
+                            <td className="dfx-td">{keyString}</td>
                         </tr>
                     </tbody>
                 </table>

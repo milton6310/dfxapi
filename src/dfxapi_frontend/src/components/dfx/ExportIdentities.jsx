@@ -8,19 +8,19 @@ function ExportIdentities(props) {
     return (
         <div className="component">
             <h2>Identity Export</h2>
-            <table>
+            <table className="dfx-table">
                 <thead>
                     <tr>
-                        <th>Canister</th>
-                        <th>PEM</th>
+                        <th className="dfx-th">Canister</th>
+                        <th className="dfx-th">PEM</th>
                     </tr>
                 </thead>
                 <tbody>
                     {identities ? identities.map((name, index) => {
                         return (
                             <tr key={index}>
-                                <td>{name}</td>
-                                <td><ExportPEM name={name} /></td>
+                                <td className="dfx-td">{name}</td>
+                                <td className="dfx-td"><ExportPEM name={name} /></td>
                             </tr>
                         );
                     }) : <tr></tr>}

@@ -12,7 +12,7 @@ function CanisterID(props) {
             });
             const id = response.data.ID;
             setCanisterId(
-                <ul>
+                <ul className="dfx-ul">
                     <li>
                         ID: {id}
                     </li>
