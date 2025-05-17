@@ -16,6 +16,10 @@ import IC "ic:aaaaa-aa";
 //Actor
 actor DfxAPI {
 
+  public query (message) func whoami() : async Principal {
+      message.caller;
+  };
+
   private type Listing = {
     itemOwner: Principal;
     itemPrice: Nat;
@@ -35,6 +39,7 @@ actor DfxAPI {
     Debug.print(debug_show(Cycles.balance()));
 
     let newNFTPrincipal = await newNFT.getCanisterId();
+    Debug.print(debug_show(newNFTPrincipal));
     mapOfNFTs.put(newNFTPrincipal, newNFT);
     addToOwnershipMap(owner, newNFTPrincipal);
 

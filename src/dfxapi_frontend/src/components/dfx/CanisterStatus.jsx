@@ -16,8 +16,6 @@ function CanisterStatus(props) {
             const items = info.others;
             const disabled = isDisabled;
 
-            console.log(items);
-
             var statusStyle;
             if (runningStatus.indexOf("Running") >= 0) {
                 statusStyle = { color: "blue", fontWeight: "bolder" };

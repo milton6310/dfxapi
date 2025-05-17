@@ -9,9 +9,10 @@ import ExecuteCommand from "./dfx/ExecuteCommand";
 import CanisterCycles from "./dfx/CanisterCycles";
 import CanisterStatusInfo from "./dfx/CanisterStatusInfo";
 import ExportIdentities from "./dfx/ExportIdentities";
+import LogIn from "./dfx/LogIn";
 import "./dfx.scss";
 
-function Dfx() {
+function Dfx(props) {
 
     const [listOfCanisters, setListOfCanisters] = useState();
     const [rootKey, setRootKey] = useState();
@@ -31,12 +32,12 @@ function Dfx() {
 
     return (
         <div className="dfx-container">
-            <div>
+            <div style={{ marginBottom: "0px" }}>
                 <h1>Use of DFX API</h1>
                 <p>
                     API server file (server.js) should reside in the project root directory with dfx.json. Base URL is "http://localhost:5000". REACT frontend makes API calls to the API server running on Port 5000. the following module needs to be installed. Use "nodemon server.js" to start the server.
                 </p>
-                <div>
+                <div style={{ marginBottom: "0px" }}>
                     <ul className="dfx-ul">
                         <li>"ejs": "^3.1.10"</li>
                         <li>"express": "^5.1.0"</li>
@@ -45,7 +46,8 @@ function Dfx() {
                     </ul>
                 </div>
             </div>
-            <WhoAmI />
+            <LogIn />
+            <WhoAmI user={props.user} />
             <Identities onList={handleIdentityList} />
             <Ping onRootKey={handleRootKey} />
             <Ledger />

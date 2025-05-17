@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-function WhoAmI() {
+function WhoAmI(props) {
 
     const [iam, setIam] = useState();
     const [principal, setPrincipal] = useState("");
@@ -30,6 +30,8 @@ function WhoAmI() {
 
     return (
         <div className="component">
+            <span className="accent">User Logged In</span>: {props.user.toText()}
+            <br />
             <span className="accent">I am </span>: {iam}
             <br />
             <span className="accent">Principal</span>: {principal}

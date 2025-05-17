@@ -1,26 +1,24 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../public/logo.png";
-// import homeImage from "../../public/home-img.png";
 import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
 import Dfx from "./Dfx";
 import Minter from "../components/nft/Minter";
 import Gallery from "../components/nft/Gallery";
 import { dfxapi_backend } from "../../../declarations/dfxapi_backend";
-import CURRENT_USER_ID from "../main";
 
-function Header() {
+function Header(props) {
 
     const [userOwnedGallery, setOwnedGallery] = useState();
     const [listingGallery, setListingGallery] = useState();
 
     async function getNFTs() {
-        const userNFTIds = await dfxapi_backend.getOwnedNFTs(CURRENT_USER_ID);
-        console.log(userNFTIds);
-        setOwnedGallery(<Gallery title="My NFTs" ids={userNFTIds} role="collection" />);
+        const userNFTIds = await dfxapi_backend.getOwnedNFTs(props.userPrincipal);
+        // console.log(userNFTIds);
+        setOwnedGallery(<Gallery userPrincipal={props.userPrincipal} title="My NFTs" ids={userNFTIds} role="collection" />);
 
         const listedNFTIds = await dfxapi_backend.getListedNFTs();
-        console.log(listedNFTIds);
-        setListingGallery(<Gallery title="Discover" ids={listedNFTIds} role="discover" />);
+        // console.log(listedNFTIds);
+        setListingGallery(<Gallery userPrincipal={props.userPrincipal} title="Discover" ids={listedNFTIds} role="discover" />);
     };
 
     useEffect(() => {
@@ -59,7 +57,7 @@ function Header() {
                 </header>
             </div>
             <Routes>
-                <Route exact path="/" element={<Dfx />} />
+                <Route exact path="/" element={<Dfx user={props.userPrincipal} />} />
                 <Route path="/discover" element={listingGallery} />
                 <Route path="/minter" element={<Minter />} />
                 <Route path="/collection" element={userOwnedGallery} />

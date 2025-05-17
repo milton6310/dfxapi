@@ -5,7 +5,6 @@ import { idlFactory as mtokenIdlFactory } from "../../../../declarations/mtoken_
 import { dfxapi_backend } from "../../../../declarations/dfxapi_backend";
 import { Principal } from "@dfinity/principal";
 import Button from "./Button";
-import CURRENT_USER_ID from "../../main";
 import PriceLabel from "./PriceLabel";
 
 function Item(props) {
@@ -57,10 +56,10 @@ function Item(props) {
         setButton(<Button onClick={handleSell} text={"Sell"} />);
       }
     } else if (props.role == "discover") {
-      console.log(props.id.toText());
+      // console.log(props.id.toText());
       const originalOwner = await dfxapi_backend.getOriginalOwner(props.id);
-      console.log(originalOwner.toText());
-      if (originalOwner.toText() != CURRENT_USER_ID.toText()) {
+      // console.log(originalOwner.toText());
+      if (originalOwner.toText() != props.userPrincipal.toText()) {
         setButton(<Button onClick={handleBuy} text={"Buy"} />);
       }
       const price = await dfxapi_backend.getListedNFTPrice(props.id);
@@ -107,7 +106,7 @@ function Item(props) {
     setLoaderHidden(false);
     const mtokenActor = Actor.createActor(mtokenIdlFactory, {
       agent,
-      canisterId: Principal.fromText("vb2j2-fp777-77774-qaafq-cai"),
+      canisterId: Principal.fromText("xobql-2x777-77774-qaaja-cai"),
     });
 
     const sellerId = await dfxapi_backend.getOriginalOwner(props.id);
@@ -117,7 +116,7 @@ function Item(props) {
     const result = await mtokenActor.transfer(sellerId, itemPrice);
     console.log(result);
     if (result == "Success") {
-      const transferResult = await dfxapi_backend.completePurchase(props.id, sellerId, CURRENT_USER_ID);
+      const transferResult = await dfxapi_backend.completePurchase(props.id, sellerId, props.userPrincipal);
       setLoaderHidden(true);
       setDisplay(false);
       console.log("purchase: " + transferResult);

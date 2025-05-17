@@ -1,33 +1,43 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import { AuthClient } from '@dfinity/auth-client';
+import { createActor } from '../../declarations/dfxapi_backend';
+import { canisterId } from '../../declarations/dfxapi_backend/index.js';
 import './index.scss';
-import { AuthClient } from "@dfinity/auth-client";
-import { Principal } from '@dfinity/principal';
 
-const CURRENT_USER_ID = Principal.fromText("2vxsx-fae");
-export default CURRENT_USER_ID;
+const network = process.env.DFX_NETWORK;
+const identityProvider =
+  network === 'ic'
+    ? 'https://identity.ic0.app' // Mainnet
+    : 'http://rdmx6-jaaaa-aaaaa-aaadq-cai.localhost:4943'; // Local
 
 const init = async () => {
+
   const authClient = await AuthClient.create();
-  if (authClient.isAuthenticated()) {
+  const isAuthenticated = await authClient.isAuthenticated();
+
+  if (isAuthenticated) {
     handleAuthenticated(authClient);
   } else {
     await authClient.login({
-      identityProvider: "https://identity.ic0.app/#authorize",
-      onSuccess: () => {
-        handleAuthenticated(authClient);
-      }
+      identityProvider,
+      onSuccess: handleAuthenticated(authClient)
     });
   }
 }
 
 async function handleAuthenticated(client) {
-  const identity = await client.getIdentity();
-  const userPrincipal = identity.getPrincipal();
+  const identity = client.getIdentity();
+  const actor = createActor(canisterId, {
+    agentOptions: {
+      identity
+    }
+  });
+  const principal = await actor.whoami();
   ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-      <App loggedInPrincipal={userPrincipal.toString()} />
+      <App loggedInPrincipal={principal} />
     </React.StrictMode>,
   );
 }

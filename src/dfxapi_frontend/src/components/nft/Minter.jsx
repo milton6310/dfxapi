@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { dfxapi_backend } from "../../../../declarations/dfxapi_backend";
-import { Principal } from "@dfinity/principal";
 import Item from "./Item";
 
 function Minter() {
@@ -18,7 +17,6 @@ function Minter() {
     const imageByteData = [...new Uint8Array(imageArray)];
 
     const newNFTID = await dfxapi_backend.mint(imageByteData, name);
-    console.log(newNFTID.toText());
     setNFTPrincipal(newNFTID);
     setLoaderHidden(true);
   }

@@ -92,7 +92,7 @@ function ExecuteCommand() {
         <div className="component">
             <h2>Execute Command</h2>
             <button className="dfx-button" type="button" style={{ marginLeft: "20px", marginRight: "15px" }} onClick={handleButtonClick}>RUN</button>
-            <input type="text" style={{ padding: "3px", width: "600px" }} onChange={handleInputChange} onKeyDown={handleKeyDown} value={command} />
+            <input type="text" style={{ padding: "3px", width: "80%" }} onChange={handleInputChange} onKeyDown={handleKeyDown} value={command} />
             <div className="exec-table">
                 {execResult}
             </div>
